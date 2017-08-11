@@ -4,7 +4,7 @@ Collection of ansible playbooks which prepare systems for ceph-ansible
   * install_Pbench   <-- installs pbench (all systems)
 
 To run any of them invoke with:
-  * 'ansible-playbook -i hosts.inv <playbook>
+  * 'ansible-playbook -i hosts.inv <playbook>'
 
 These files must be edited for your environment
   * hosts.inv
