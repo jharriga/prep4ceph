@@ -15,3 +15,11 @@ DEPENDENCIES:
   * /usr/bin/expect
   * existing SSH public key
   
+NOTE: you may have to disable strict host key checking. For security, you should only do this temporarily.
+One approach is to edit your SSH config file
+```
+# cat /root/.ssh/config 
+Host *
+    User                  root
+    StrictHostKeyChecking no
+```
