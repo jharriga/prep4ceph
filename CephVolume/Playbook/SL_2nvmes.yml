@@ -1,6 +1,6 @@
 ---
 
-# ansible script to prepare OSD devices for osd_scenario=lvm
+# Ansible script to prepare OSD devices for osd_scenario=lvm
 # Partitions NVMe and HDD devices and then creates log vols
 # LVM logical volume will be named /dev/vg-ceph-$dev/lv-ceph-$dev
 # where $dev is the hdd device name
