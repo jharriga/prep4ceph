@@ -1,0 +1,34 @@
+osd_scenario: lvm  <-- three logvols
+=================
+
+lvm_volumes:
+  cached-lv0: /dev/nvme0n1p5
+  cached-lv1: /dev/nvme0n1p6
+  cached-lv2: /dev/nvme0n1p7
+  noncached-lv0: /dev/nvme0n1p8
+  noncached-lv1: /dev/nvme0n1p9
+  noncached-lv2: /dev/nvme0n1p10
+ 
+NVME Partitions
+===============
+/dev/nvme0n1
+  fastDEV (12G each) = p1, p2, p3
+  journals Cached (5G each) = p5, p6, p7
+  journals NonCached (5G each) = p8, p9, p10
+
+LVM Layout
+==========
+VolGroups:
+    slow-vg
+    fast-vg        <-- ? what are these actually named?
+    cached-vg
+    noncached-vg   <-- ? REPLACE WITH ONE VG 'ceph-vg'?
+
+LogVols:
+    /dev/noncached-vg/noncached-lv0
+    /dev/noncached-vg/noncached-lv1
+    /dev/noncached-vg/noncached-lv2
+    /dev/cached-vg/noncached-lv0
+    /dev/cached-vg/noncached-lv1
+    /dev/cached-vg/noncached-lv2
+

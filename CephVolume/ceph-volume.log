@@ -1,0 +1,2964 @@
+# ansible-playbook site.yml
+ [WARNING]: While constructing a mapping from /usr/share/ceph-ansible/roles
+/ceph-defaults/defaults/main.yml, line 8, column 1, found a duplicate dict key
+(containerized_deployment_with_kv). Using last defined value only.
+
+[DEPRECATION WARNING]: docker is kept for backwards compatibility but usage is 
+discouraged. The module documentation details page may explain more about this 
+rationale..
+This feature will be removed in a future release. Deprecation 
+warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [mons,agents,osds,mdss,rgws,nfss,restapis,rbdmirrors,clients,mgrs] ********
+
+TASK [check for python2] *******************************************************
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [install python2 for Debian based systems] ********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [install python2 for Fedora] **********************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [gathering facts] *********************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+
+TASK [install required packages for Fedora > 23] *******************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+PLAY [mons] ********************************************************************
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : is ceph running already?] ********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check if fetch/ directory exists] ************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : create a local fetch directory if it does not exist] *****
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : generate cluster fsid] ***********************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : reuse cluster fsid when cluster is already running] ******
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : read cluster fsid if it already exists] ******************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set fsid fact when generate_fsid = true] *****************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set docker_exec_cmd fact] ********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket] *********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket in containerized deployment (osds)] ***
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported system] ********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported architecture] **************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution] **************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for red hat ceph storage] *
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for ubuntu cloud archive] *
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported ansible version] ***********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if systemd is not present] ****************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation origin was chosen] ***************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation source was chosen] ***************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is set] **********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is correct] ******************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that a method was chosen for red hat storage] *******
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that ceph_rhcs_cdn_debian_repo url is valid for red hat storage] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure monitor_interface or monitor_address is defined] *
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./installs/install_on_redhat.yml for gprfc092.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install redhat dependencies] *******************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+
+TASK [ceph-common : install centos dependencies] *******************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : configure ceph yum repository] *****************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/installs/redhat_ceph_repository.yml for gprfc092.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install the ceph stable repository key] ********************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph stable repository] ********************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fetch ceph development repo file] **************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph development repository] ***************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add custom repo] *******************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : purge yum cache] *******************************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+ [WARNING]: Consider using yum module rather than running yum
+
+
+TASK [ceph-common : make sure /tmp exists] *************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : use mktemp to create name for rundep] **********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : copy rundep] ***********************************************
+
+TASK [ceph-common : install ceph dependencies] *********************************
+
+TASK [ceph-common : ensure rsync is installed] *********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : synchronize ceph install] **********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user group ceph] ************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user ceph] ******************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mon] ****************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph osd] ****************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mds] ****************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph-fuse] ***************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph base] ***************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ceph-test] *****************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install rados gateway] *************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs ceph gateway] **********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs rgw gateway] ***********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : install ceph mgr] ******************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./misc/ntp_redhat.yml for gprfc092.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/checks/check_ntp_redhat.yml for gprfc092.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : check ntp installation on redhat] **************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+ [WARNING]: Consider using yum, dnf or zypper module rather than running rpm
+
+
+TASK [ceph-common : install ntp on redhat] *************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : start the ntp service] *************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get ceph version] ******************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check if /var/lib/ceph/mon/ceph-gprfc092/keyring already exists] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if /var/lib/ceph/mon/ceph-gprfc092/keyring doesn't exist] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get existing initial mon keyring if it already exists but not monitor_keyring.conf in fetch/] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : test existing initial mon keyring] *************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if initial mon keyring found doesn't work] ************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : write initial mon keyring in fetch//monitor_keyring.conf if it doesn't exist] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : put initial mon keyring in mon kv store] *******************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create ceph initial directories] ***************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+
+TASK [ceph-common : create ceph conf directory and assemble directory] *********
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+
+TASK [ceph-common : template ceph_conf_overrides] ******************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : get rendered ceph_conf_overrides] **************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : generate ceph configuration file: ceph.conf] ***************
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : assemble ceph.conf and fragments] **************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create rbd client directory] *******************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+
+TASK [ceph-common : configure cluster name] ************************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check /etc/default/ceph exist] *****************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : make sure monitor_interface or monitor_address or monitor_address_block is configured] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : generate monitor initial keyring] *****************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-mon : read monitor initial keyring if it already exists] ************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-mon : create monitor initial keyring] *******************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set initial monitor key permissions] **************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create (and fix ownership of) monitor directory] **************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set_fact] *****************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set_fact] *****************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create custom admin keyring] **********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set ownership of admin keyring] *******************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : import admin keyring into mon keyring] ************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : ceph monitor mkfs with keyring] *******************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : ceph monitor mkfs without keyring] ****************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : start the monitor service] ************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : enable the ceph-mon.target service] ***************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+included: /usr/share/ceph-ansible/roles/ceph-mon/tasks/ceph_keys.yml for gprfc092.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-mon : collect admin and bootstrap keys] *****************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : wait for ceph.client.admin.keyring exists] ********************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : test if initial mon keyring is in mon kv store] ***************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : put initial mon keyring in mon kv store] **********************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create ceph rest api keyring when mon is not containerized] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create ceph mgr keyring(s) when mon is not containerized] *****
+
+TASK [ceph-mon : include] ******************************************************
+included: /usr/share/ceph-ansible/roles/ceph-mon/tasks/set_osd_pool_default_pg_num.yml for gprfc092.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-mon : check if does global key exist in ceph_conf_overrides] ********
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : check if ceph_conf_overrides.global.osd_pool_default_pg_num is set] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : get default value for osd_pool_default_pg_num] ****************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set_fact] *****************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set_fact] *****************************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set_fact] *****************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : test if rbd exists] *******************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create rbd pool on luminous] **********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : find ceph keys] ***********************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set keys permissions] *****************************************
+ok: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.client.admin.keyring)
+
+TASK [ceph-mon : copy keys to the ansible server] ******************************
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.client.admin.keyring)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd/ceph.keyring)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw/ceph.keyring)
+changed: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds/ceph.keyring)
+
+TASK [ceph-mon : drop in a motd script to report status when logging in] *******
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create filesystem pools] **************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=cephfs_data) 
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=cephfs_metadata) 
+
+TASK [ceph-mon : check if ceph filesystem already exists] **********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create ceph filesystem] ***************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : allow multimds] ***********************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : set max_mds] **************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : collect all the pools] ****************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : secure the cluster] *******************************************
+
+TASK [ceph-mon : populate kv_store with default ceph.conf] *********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : populate kv_store with custom ceph.conf] **********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : delete populate-kv-store docker] ******************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : generate systemd unit file] ***********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : enable systemd unit file for mon instance] ********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : reload systemd unit files] ************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : systemd start mon container] **********************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : wait for monitor socket to exist] *****************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : force peer addition as potential bootstrap peer for cluster bringup] ***
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=gprfc092.sbu.lab.eng.bos.redhat.com) 
+
+TASK [ceph-mon : push ceph files to the ansible server] ************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create ceph rest api keyring when mon is containerized] *******
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : include] ******************************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : create ceph mgr keyring(s) when mon is containerized] *********
+
+TASK [ceph-mon : stat for ceph mgr key(s)] *************************************
+
+TASK [ceph-mon : push ceph mgr key(s)] *****************************************
+
+TASK [ceph-mon : install calamari server] **************************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-mon : increase calamari logging level when debug is on] *************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=cthulhu) 
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=calamari_web) 
+
+TASK [ceph-mon : initialize the calamari server api] ***************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy mon restart script] **********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mon daemon(s)] *******************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy osd restart script] **********************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart containerized ceph osds daemon(s)] ****
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart non-containerized ceph osds daemon(s)] 
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mdss] ****************************
+
+RUNNING HANDLER [ceph-defaults : restart ceph rgws] ****************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com] => (item=gprfc093.sbu.lab.eng.bos.redhat.com) 
+
+RUNNING HANDLER [ceph-defaults : restart ceph nfss] ****************************
+skipping: [gprfc092.sbu.lab.eng.bos.redhat.com]
+
+PLAY [osds] ********************************************************************
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : is ceph running already?] ********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check if fetch/ directory exists] ************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : create a local fetch directory if it does not exist] *****
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : generate cluster fsid] ***********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : reuse cluster fsid when cluster is already running] ******
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : read cluster fsid if it already exists] ******************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set fsid fact when generate_fsid = true] *****************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set docker_exec_cmd fact] ********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket] *********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket in containerized deployment (osds)] ***
+
+TASK [ceph-common : fail on unsupported system] ********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported architecture] **************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution] **************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for red hat ceph storage] *
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for ubuntu cloud archive] *
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported ansible version] ***********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if systemd is not present] ****************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation origin was chosen] ***************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation source was chosen] ***************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is set] **********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is correct] ******************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that a method was chosen for red hat storage] *******
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that ceph_rhcs_cdn_debian_repo url is valid for red hat storage] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure monitor_interface or monitor_address is defined] *
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./misc/system_tuning.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : disable osd directory parsing by updatedb] *****************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create tmpfiles.d directory] *******************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : disable transparent hugepage] ******************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get default vm.min_free_kbytes] ****************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : define vm.min_free_kbytes] *********************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : apply operating system tuning] *****************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'kernel.pid_max', u'value': 4194303})
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'kernel.pid_max', u'value': 4194303})
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'kernel.pid_max', u'value': 4194303})
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'fs.file-max', u'value': 26234859})
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'fs.file-max', u'value': 26234859})
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'fs.file-max', u'value': 26234859})
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.zone_reclaim_mode', u'value': 0})
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.zone_reclaim_mode', u'value': 0})
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.zone_reclaim_mode', u'value': 0})
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.swappiness', u'value': 10})
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.swappiness', u'value': 10})
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.swappiness', u'value': 10})
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.min_free_kbytes', u'value': u'4194303'})
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.min_free_kbytes', u'value': u'4194303'})
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'vm.min_free_kbytes', u'value': u'4194303'})
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./installs/install_on_redhat.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install redhat dependencies] *******************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+
+TASK [ceph-common : install centos dependencies] *******************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : configure ceph yum repository] *****************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/installs/redhat_ceph_repository.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install the ceph stable repository key] ********************
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph stable repository] ********************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fetch ceph development repo file] **************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph development repository] ***************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add custom repo] *******************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : purge yum cache] *******************************************
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure /tmp exists] *************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : use mktemp to create name for rundep] **********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : copy rundep] ***********************************************
+
+TASK [ceph-common : install ceph dependencies] *********************************
+
+TASK [ceph-common : ensure rsync is installed] *********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : synchronize ceph install] **********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user group ceph] ************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user ceph] ******************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mon] ****************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph osd] ****************
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mds] ****************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph-fuse] ***************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph base] ***************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ceph-test] *****************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install rados gateway] *************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs ceph gateway] **********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs rgw gateway] ***********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : install ceph mgr] ******************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./misc/ntp_redhat.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/checks/check_ntp_redhat.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : check ntp installation on redhat] **************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ntp on redhat] *************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : start the ntp service] *************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get ceph version] ******************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check if /var/lib/ceph/mon/ceph-gprfs041/keyring already exists] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if /var/lib/ceph/mon/ceph-gprfs041/keyring doesn't exist] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get existing initial mon keyring if it already exists but not monitor_keyring.conf in fetch/] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : test existing initial mon keyring] *************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if initial mon keyring found doesn't work] ************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : write initial mon keyring in fetch//monitor_keyring.conf if it doesn't exist] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : put initial mon keyring in mon kv store] *******************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create ceph initial directories] ***************************
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+
+TASK [ceph-common : create ceph conf directory and assemble directory] *********
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+
+TASK [ceph-common : template ceph_conf_overrides] ******************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : get rendered ceph_conf_overrides] **************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : generate ceph configuration file: ceph.conf] ***************
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : assemble ceph.conf and fragments] **************************
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create rbd client directory] *******************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+
+TASK [ceph-common : configure cluster name] ************************************
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com]
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check /etc/default/ceph exist] *****************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure public_network configured] **************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure cluster_network configured] *************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure journal_size configured] ****************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure an osd scenario was chosen] *************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure a valid osd scenario was chosen] ********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : verify devices have been provided] ****************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : check if osd_scenario lvm is supported by the selected ceph version] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : verify osd_objectstore is 'filestore' when using the lvm osd_scenario] ***
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : verify lvm_volumes have been provided] ************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure the lvm_volumes variable is a dictionary] ***********
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure the devices variable is a list] *********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : verify journal devices have been provided] ********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : make sure the dedicated_devices variable is a list] ***********
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : check if bluestore is supported by the selected ceph version] *
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : include] ******************************************************
+included: /usr/share/ceph-ansible/roles/ceph-osd/tasks/pre_requisite.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-osd : enable extras repo for centos] ********************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : install rependencies] *****************************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : create bootstrap-osd and osd directories] *********************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd/)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd/)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd/)
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd/)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd/)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd/)
+
+TASK [ceph-osd : copy ceph admin key when using dmcrypt] ***********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : copy osd bootstrap key] ***************************************
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/var/lib/ceph/bootstrap-osd/ceph.keyring', u'copy_key': True})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/var/lib/ceph/bootstrap-osd/ceph.keyring', u'copy_key': True})
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/etc/ceph/ceph.client.admin.keyring', u'copy_key': False}) 
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/etc/ceph/ceph.client.admin.keyring', u'copy_key': False}) 
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/var/lib/ceph/bootstrap-osd/ceph.keyring', u'copy_key': True})
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/etc/ceph/ceph.client.admin.keyring', u'copy_key': False}) 
+
+TASK [ceph-osd : include] ******************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : include] ******************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : create lvm osds with ceph-volume] *****************************
+included: /usr/share/ceph-ansible/roles/ceph-osd/tasks/./scenarios/lvm.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-osd : use ceph-volume to create filestore osds with dedicated journals] ***
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv1', 'value': u'/dev/nvme0n1p6'})
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv1', 'value': u'/dev/nvme0n1p6'})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv1', 'value': u'/dev/nvme0n1p6'})
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv2', 'value': u'/dev/nvme0n1p10'})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv2', 'value': u'/dev/nvme0n1p10'})
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv2', 'value': u'/dev/nvme0n1p10'})
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv1', 'value': u'/dev/nvme0n1p9'})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv1', 'value': u'/dev/nvme0n1p9'})
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv1', 'value': u'/dev/nvme0n1p9'})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv0', 'value': u'/dev/nvme0n1p8'})
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv0', 'value': u'/dev/nvme0n1p8'})
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={'key': u'noncached-lv0', 'value': u'/dev/nvme0n1p8'})
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv2', 'value': u'/dev/nvme0n1p7'})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv2', 'value': u'/dev/nvme0n1p7'})
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv2', 'value': u'/dev/nvme0n1p7'})
+changed: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv0', 'value': u'/dev/nvme0n1p5'})
+changed: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv0', 'value': u'/dev/nvme0n1p5'})
+changed: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item={'key': u'cached-lv0', 'value': u'/dev/nvme0n1p5'})
+
+TASK [ceph-osd : ensure osd daemons are started] *******************************
+included: /usr/share/ceph-ansible/roles/ceph-osd/tasks/start_osds.yml for gprfs041.sbu.lab.eng.bos.redhat.com, gprfs042.sbu.lab.eng.bos.redhat.com, gprfs044.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-osd : include] ******************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : get osd id] ***************************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-osd : ensure osd daemons are started] *******************************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=0)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=10)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=1)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=12)
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=13)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=11)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=16)
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=17)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=14)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=2)
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=3)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=15)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=5)
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=6)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=4)
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com] => (item=7)
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=9)
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com] => (item=8)
+
+TASK [ceph-osd : include] ******************************************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy mon restart script] **********************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mon daemon(s)] *******************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy osd restart script] **********************
+ok: [gprfs041.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs044.sbu.lab.eng.bos.redhat.com]
+ok: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart containerized ceph osds daemon(s)] ****
+
+RUNNING HANDLER [ceph-defaults : restart non-containerized ceph osds daemon(s)] 
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mdss] ****************************
+
+RUNNING HANDLER [ceph-defaults : restart ceph rgws] ****************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com] => (item=gprfc093.sbu.lab.eng.bos.redhat.com) 
+
+RUNNING HANDLER [ceph-defaults : restart ceph nfss] ****************************
+skipping: [gprfs041.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs044.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfs042.sbu.lab.eng.bos.redhat.com]
+
+PLAY [rgws] ********************************************************************
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : is ceph running already?] ********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check if fetch/ directory exists] ************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : create a local fetch directory if it does not exist] *****
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : generate cluster fsid] ***********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : reuse cluster fsid when cluster is already running] ******
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : read cluster fsid if it already exists] ******************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set fsid fact when generate_fsid = true] *****************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set docker_exec_cmd fact] ********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket] *********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket in containerized deployment (osds)] ***
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported system] ********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported architecture] **************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution] **************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for red hat ceph storage] *
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for ubuntu cloud archive] *
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported ansible version] ***********************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if systemd is not present] ****************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation origin was chosen] ***************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation source was chosen] ***************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is set] **********************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is correct] ******************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that a method was chosen for red hat storage] *******
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that ceph_rhcs_cdn_debian_repo url is valid for red hat storage] ***
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure monitor_interface or monitor_address is defined] *
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./installs/install_on_redhat.yml for gprfc093.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install redhat dependencies] *******************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+
+TASK [ceph-common : install centos dependencies] *******************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : configure ceph yum repository] *****************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/installs/redhat_ceph_repository.yml for gprfc093.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install the ceph stable repository key] ********************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph stable repository] ********************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fetch ceph development repo file] **************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph development repository] ***************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add custom repo] *******************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : purge yum cache] *******************************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure /tmp exists] *************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : use mktemp to create name for rundep] **********************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : copy rundep] ***********************************************
+
+TASK [ceph-common : install ceph dependencies] *********************************
+
+TASK [ceph-common : ensure rsync is installed] *********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : synchronize ceph install] **********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user group ceph] ************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user ceph] ******************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mon] ****************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph osd] ****************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mds] ****************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph-fuse] ***************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph base] ***************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ceph-test] *****************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install rados gateway] *************************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs ceph gateway] **********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs rgw gateway] ***********************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : install ceph mgr] ******************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./misc/ntp_redhat.yml for gprfc093.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/checks/check_ntp_redhat.yml for gprfc093.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : check ntp installation on redhat] **************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ntp on redhat] *************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : start the ntp service] *************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get ceph version] ******************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check if /var/lib/ceph/mon/ceph-gprfc093/keyring already exists] ***
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if /var/lib/ceph/mon/ceph-gprfc093/keyring doesn't exist] ***
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get existing initial mon keyring if it already exists but not monitor_keyring.conf in fetch/] ***
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : test existing initial mon keyring] *************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if initial mon keyring found doesn't work] ************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : write initial mon keyring in fetch//monitor_keyring.conf if it doesn't exist] ***
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : put initial mon keyring in mon kv store] *******************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create ceph initial directories] ***************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+
+TASK [ceph-common : create ceph conf directory and assemble directory] *********
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+
+TASK [ceph-common : template ceph_conf_overrides] ******************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : get rendered ceph_conf_overrides] **************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : generate ceph configuration file: ceph.conf] ***************
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : assemble ceph.conf and fragments] **************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create rbd client directory] *******************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+
+TASK [ceph-common : configure cluster name] ************************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check /etc/default/ceph exist] *****************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : include] ******************************************************
+included: /usr/share/ceph-ansible/roles/ceph-rgw/tasks/pre_requisite.yml for gprfc093.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-rgw : create rados gateway directories] *****************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw/ceph-rgw.gprfc093)
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+
+TASK [ceph-rgw : copy rados gateway bootstrap key] *****************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/var/lib/ceph/bootstrap-rgw/ceph.keyring', u'copy_key': True})
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com] => (item={u'name': u'/etc/ceph/ceph.client.admin.keyring', u'copy_key': False}) 
+
+TASK [ceph-rgw : create rados gateway keyring] *********************************
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : set rados gateway key permissions] ****************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : include] ******************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : include] ******************************************************
+included: /usr/share/ceph-ansible/roles/ceph-rgw/tasks/start_radosgw.yml for gprfc093.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-rgw : check if rgw is started] **************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : start rgw] ****************************************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : include] ******************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : include rgw multisite playbooks] ******************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-rgw : include] ******************************************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy mon restart script] **********************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mon daemon(s)] *******************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy osd restart script] **********************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart containerized ceph osds daemon(s)] ****
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart non-containerized ceph osds daemon(s)] 
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mdss] ****************************
+
+RUNNING HANDLER [ceph-defaults : restart ceph rgws] ****************************
+changed: [gprfc093.sbu.lab.eng.bos.redhat.com -> gprfc093.sbu.lab.eng.bos.redhat.com] => (item=gprfc093.sbu.lab.eng.bos.redhat.com)
+
+RUNNING HANDLER [ceph-defaults : restart ceph nfss] ****************************
+skipping: [gprfc093.sbu.lab.eng.bos.redhat.com]
+
+PLAY [clients] *****************************************************************
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : is ceph running already?] ********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com -> gprfc092.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check if fetch/ directory exists] ************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : create a local fetch directory if it does not exist] *****
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : generate cluster fsid] ***********************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : reuse cluster fsid when cluster is already running] ******
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : read cluster fsid if it already exists] ******************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> localhost]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-defaults : set fsid fact when generate_fsid = true] *****************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set docker_exec_cmd fact] ********************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : set_fact] ************************************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket] *********************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-defaults : check for a ceph socket in containerized deployment (osds)] ***
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported system] ********************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported architecture] **************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution] **************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for red hat ceph storage] *
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported distribution for ubuntu cloud archive] *
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail on unsupported ansible version] ***********************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if systemd is not present] ****************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation origin was chosen] ***************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure an installation source was chosen] ***************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is set] **********************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure ceph_stable_release is correct] ******************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that a method was chosen for red hat storage] *******
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : verify that ceph_rhcs_cdn_debian_repo url is valid for red hat storage] ***
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure monitor_interface or monitor_address is defined] *
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./installs/install_on_redhat.yml for gprfc089.sbu.lab.eng.bos.redhat.com, gprfc094.sbu.lab.eng.bos.redhat.com, gprfc095.sbu.lab.eng.bos.redhat.com, gprfc090.sbu.lab.eng.bos.redhat.com, gprfc091.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install redhat dependencies] *******************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=[u'python-pycurl', u'hdparm', u'python-setuptools'])
+
+TASK [ceph-common : install centos dependencies] *******************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : configure ceph yum repository] *****************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/installs/redhat_ceph_repository.yml for gprfc089.sbu.lab.eng.bos.redhat.com, gprfc094.sbu.lab.eng.bos.redhat.com, gprfc095.sbu.lab.eng.bos.redhat.com, gprfc090.sbu.lab.eng.bos.redhat.com, gprfc091.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : install the ceph stable repository key] ********************
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph stable repository] ********************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fetch ceph development repo file] **************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add ceph development repository] ***************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : add custom repo] *******************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : purge yum cache] *******************************************
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : make sure /tmp exists] *************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : use mktemp to create name for rundep] **********************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : copy rundep] ***********************************************
+
+TASK [ceph-common : install ceph dependencies] *********************************
+
+TASK [ceph-common : ensure rsync is installed] *********************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : synchronize ceph install] **********************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user group ceph] ************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create user ceph] ******************************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mon] ****************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph osd] ****************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph mds] ****************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph-fuse] ***************
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install distro or red hat storage ceph base] ***************
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ceph-test] *****************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install rados gateway] *************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs ceph gateway] **********************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install nfs rgw gateway] ***********************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=[]) 
+
+TASK [ceph-common : install ceph mgr] ******************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/./misc/ntp_redhat.yml for gprfc089.sbu.lab.eng.bos.redhat.com, gprfc090.sbu.lab.eng.bos.redhat.com, gprfc094.sbu.lab.eng.bos.redhat.com, gprfc095.sbu.lab.eng.bos.redhat.com, gprfc091.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : include] ***************************************************
+included: /usr/share/ceph-ansible/roles/ceph-common/tasks/checks/check_ntp_redhat.yml for gprfc090.sbu.lab.eng.bos.redhat.com, gprfc094.sbu.lab.eng.bos.redhat.com, gprfc095.sbu.lab.eng.bos.redhat.com, gprfc089.sbu.lab.eng.bos.redhat.com, gprfc091.sbu.lab.eng.bos.redhat.com
+
+TASK [ceph-common : check ntp installation on redhat] **************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : install ntp on redhat] *************************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : start the ntp service] *************************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : include] ***************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get ceph version] ******************************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : set_fact] **************************************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check if /var/lib/ceph/mon/ceph-gprfc089/keyring already exists] ***
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if /var/lib/ceph/mon/ceph-gprfc089/keyring doesn't exist] ***
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : get existing initial mon keyring if it already exists but not monitor_keyring.conf in fetch/] ***
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : test existing initial mon keyring] *************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : fail if initial mon keyring found doesn't work] ************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : write initial mon keyring in fetch//monitor_keyring.conf if it doesn't exist] ***
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : put initial mon keyring in mon kv store] *******************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create ceph initial directories] ***************************
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mon)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/osd)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/mds)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/tmp)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/radosgw)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-rgw)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-mds)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/lib/ceph/bootstrap-osd)
+
+TASK [ceph-common : create ceph conf directory and assemble directory] *********
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/etc/ceph/ceph.d/)
+
+TASK [ceph-common : template ceph_conf_overrides] ******************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : get rendered ceph_conf_overrides] **************************
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com -> localhost]
+
+TASK [ceph-common : generate ceph configuration file: ceph.conf] ***************
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_bytes is deprecated.  Use 
+ansible.module_utils._text.to_bytes instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: ansible.utils.unicode.to_unicode is deprecated.  Use 
+ansible.module_utils._text.to_text instead.
+This feature will be removed in 
+version 2.4. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : assemble ceph.conf and fragments] **************************
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : create rbd client directory] *******************************
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/run/ceph)
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=/var/log/ceph)
+
+TASK [ceph-common : configure cluster name] ************************************
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : check /etc/default/ceph exist] *****************************
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+[DEPRECATION WARNING]: always_run is deprecated. Use check_mode = no instead..
+
+This feature will be removed in version 2.4. Deprecation warnings can be 
+disabled by setting deprecation_warnings=False in ansible.cfg.
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-common : configure cluster name] ************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-client : copy ceph admin keyring] ***********************************
+changed: [gprfc094.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc089.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc090.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc095.sbu.lab.eng.bos.redhat.com]
+changed: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-client : check if global key exists in ceph_conf_overrides] *********
+ok: [gprfc089.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc090.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc095.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc094.sbu.lab.eng.bos.redhat.com]
+ok: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-client : create pools] **********************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+
+TASK [ceph-client : create key(s)] *********************************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+
+TASK [ceph-client : check if key(s) already exist(s)] **************************
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+
+TASK [ceph-client : add key(s) to ceph] ****************************************
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, 'changed': False}]) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, 'changed': False}]) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, 'changed': False}]) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, 'changed': False}]) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, 'changed': False}]) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, 'changed': False}]) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, 'changed': False}]) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, 'changed': False}]) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}, 'changed': False}]) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item=[{u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, {'skipped': True, '_ansible_no_log': False, 'skip_reason': u'Conditional check failed', '_ansible_item_result': True, 'item': {u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}, 'changed': False}]) 
+
+TASK [ceph-client : setfacl for key(s)] ****************************************
+
+TASK [ceph-client : chmod key(s)] **********************************************
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test2', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test2'}) 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item={u'mon_cap': u'allow r', u'name': u'client.test', u'acls': [], u'mode': u'0600', u'key': u'$(ceph-authtool --gen-print-key)', u'osd_cap': u'allow class-read object_prefix rbd_children, allow rwx pool=test'}) 
+
+RUNNING HANDLER [ceph-defaults : copy mon restart script] **********************
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mon daemon(s)] *******************
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : copy osd restart script] **********************
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart containerized ceph osds daemon(s)] ****
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart non-containerized ceph osds daemon(s)] 
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+RUNNING HANDLER [ceph-defaults : restart ceph mdss] ****************************
+
+RUNNING HANDLER [ceph-defaults : restart ceph rgws] ****************************
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com] => (item=gprfc093.sbu.lab.eng.bos.redhat.com) 
+
+RUNNING HANDLER [ceph-defaults : restart ceph nfss] ****************************
+skipping: [gprfc091.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc094.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc095.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc090.sbu.lab.eng.bos.redhat.com]
+skipping: [gprfc089.sbu.lab.eng.bos.redhat.com]
+
+PLAY RECAP *********************************************************************
+gprfc089.sbu.lab.eng.bos.redhat.com : ok=41   changed=10   unreachable=0    failed=0   
+gprfc090.sbu.lab.eng.bos.redhat.com : ok=37   changed=10   unreachable=0    failed=0   
+gprfc091.sbu.lab.eng.bos.redhat.com : ok=37   changed=10   unreachable=0    failed=0   
+gprfc092.sbu.lab.eng.bos.redhat.com : ok=58   changed=13   unreachable=0    failed=0   
+gprfc093.sbu.lab.eng.bos.redhat.com : ok=47   changed=13   unreachable=0    failed=0   
+gprfc094.sbu.lab.eng.bos.redhat.com : ok=37   changed=10   unreachable=0    failed=0   
+gprfc095.sbu.lab.eng.bos.redhat.com : ok=37   changed=10   unreachable=0    failed=0   
+gprfs041.sbu.lab.eng.bos.redhat.com : ok=55   changed=10   unreachable=0    failed=0   
+gprfs042.sbu.lab.eng.bos.redhat.com : ok=51   changed=10   unreachable=0    failed=0   
+gprfs044.sbu.lab.eng.bos.redhat.com : ok=51   changed=10   unreachable=0    failed=0   
+
+
