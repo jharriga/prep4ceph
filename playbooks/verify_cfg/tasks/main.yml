@@ -1,0 +1,54 @@
+---
+
+#####################################################################
+# FILENAME: 'verify_cfg/tasks/main.yml'
+# Post install verification of RHCS cluster
+# SHOULD ONLY BE RUN ON THE 'admin' node
+# 
+#####################################################################
+
+# test for {{ results_file }}
+- name: test for results_file
+  stat: path="{{ results_file }}"
+  register: statRF_res
+  failed_when:
+    statRF_res.stat.exists == False
+
+#############################
+# Execute ping test
+#   verify SSH passwordless and use /etc/ansible/hosts
+#----------------------------
+- name: run ping test
+  command: ansible -i /etc/ansible/hosts all -m ping
+  register: ping_res
+  failed_when:
+    ping_res.rc != 0
+
+- name: append ping stout to results.txt
+  shell: echo "{{ item }}" >> "{{ results_file }}"
+  with_items:
+    - ping_res.stdout
+
+#############################
+# Execute PBENCH_UPERF test
+#  pbench_fio - - clients=$clients 
+#----------------------------
+#- name: create 'list_of_clients'
+#
+#
+#- name: pbench_uperf
+#  command: "pbench_uperf --clients {{ list_of_clients }}"
+#  register: pbench_res
+#
+#- name: append pbench_uperf run to results.txt
+#  shell: echo "{{ item }}" >> "{{ results_file }}"
+#  with_items:
+#    - pbench_res.stdout
+
+#############################
+# display the resultsfile
+#----------------------------
+- name: cat the file
+  shell: cat "{{ results_file }}"
+
+

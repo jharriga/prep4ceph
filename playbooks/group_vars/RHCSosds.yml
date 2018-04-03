@@ -1,0 +1,25 @@
+---
+
+# OSD group system vars
+
+# Define 'my_networks' dict for SERVER systems
+#   vars used in 'network/tasks/main.yml' and in template 'public.j2'
+#   vars used in 'network/tasks/main.yml' and in template 'private.j2'
+# Variable values set in hosts inventory and 'group_vars/all'
+my_networks:
+  public_net: 
+    net_name: "{{ public_netname }}"
+    net_iface: p4p1
+    net_ip: "{{ public_netIP }}"
+    ip_addr: "{{ public_ip }}"
+    netmask: "{{ public_netmask }}"
+    mtu: "{{ public_mtu }}"
+  private_net:
+    net_name: "{{ private_netname }}"
+    net_iface: p4p2
+    net_ip: "{{ private_netIP }}"
+    ip_addr: "{{ private_ip }}"
+    netmask: "{{ private_netmask }}"
+    mtu: "{{ private_mtu }}"
+
+

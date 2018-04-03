@@ -1,0 +1,20 @@
+[RHCSadmin]
+gprfc091.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.91"
+
+[RHCSmons]
+gprfc092.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.92"
+
+[RHCSrgw]
+gprfc093.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.93"
+
+[RHCSosds]
+gprfs041.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.1" private_ip="10.0.0.1"
+gprfs042.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.2" private_ip="10.0.0.2"
+gprfs044.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.4" private_ip="10.0.0.4"
+
+[RHCSclients]
+gprfc089.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.89"
+gprfc090.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.90"
+gprfc094.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.94"
+gprfc095.sbu.lab.eng.bos.redhat.com public_ip="172.245.1.95"
+

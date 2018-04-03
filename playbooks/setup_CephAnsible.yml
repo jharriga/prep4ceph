@@ -1,0 +1,55 @@
+---
+
+#####################################################################
+# FILENAME: 'setup_CephAnsible.yml'
+# Sample cmdline:
+#   $ ansible-playbook -i hosts setup_CephAnsible.yml
+#
+# Be sure to configure site specific variables in 'group_vars/all' file
+#  - users
+#  - repos
+#  - packages
+#  - network
+#  - pre_CephAnsible
+#  - run_CephAnsible
+#--------------------------------------------------------------------
+#
+#############################
+# Run these roles on all systems
+#----------------------------
+- hosts: all
+  roles:
+    - add_users
+    - cfg_repos
+    - add_pkgs
+    - cfg_network
+
+#############################
+# Perform disk role on OSD nodes only
+#   WARNING: this rewrites the device partiion tables on "{{ ca_osd_devices }}"
+#            which must be defined in 'group_vars/all'
+#----------------------------
+#- hosts: RHCSosds
+#  roles:
+#    - cfg_OSDdisks        <-- better handled by purge-cluster
+
+#############################
+# Prepare for running ceph-ansible on admin node
+# 'ceph-ansible' will ONLY be executed on the 'admin' node
+#----------------------------
+#- hosts: RHCSadmin
+#  roles:
+#    - pre_CephAnsible
+#    - verify_cfg             <-- not yet fully written
+
+#############################
+# Run the ceph-ansible playbook on admin node  <-- possible future enhancement
+#  currently the user must manually run this
+#----------------------------
+#- hosts: RHCSadmin
+#  roles:
+#    - run_CephAnsible
+
+
+
+

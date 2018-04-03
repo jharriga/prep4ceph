@@ -1,0 +1,20 @@
+---
+
+# HANDLER - role = network
+# restart the reconfigured network(s)
+# Restart the network, sleep 3 seconds, return the
+# exit code returned by "service network restart".
+# This is to work-around a glitch in Ansible where
+# it detects a successful network restart as a failure.
+#
+- name: restart network_iface
+#  command: perl -e 'my $exit_code = system("service network restart"); sleep 3; \
+# $exit_code = $exit_code >> 8; exit($exit_code);'
+#  service:
+#    name: network
+#    enabled: yes
+#    state: restarted
+#    args: "{{ cfgd_iface }}"
+  command: bash -c "ifdown {{ item.item.device }} && ifup {{ item.item.device }}"
+  when: item.change == True
+  with_items: "{{ cfgd_iface.results }}"

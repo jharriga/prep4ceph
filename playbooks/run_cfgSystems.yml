@@ -1,0 +1,31 @@
+---
+
+#####################################################################
+# FILENAME: 'run_cfgSystems.yml'
+# Sample cmdline:
+#   $ ansible-playbook -i hosts.inv run_cfgSystems.yml
+#
+# Configures the Networking on all systems (role: cfg_network)
+# Install software pkgs on all systems (role: add_pkgs)
+# Also resets OSD devices (role: cfg_OSDdevices)
+#
+# EDIT the 'hosts.inv' file with list of hosts and their network cfg
+#
+# Be sure to configure site specific variables in 'group_vars/all' file
+#  - network
+#  - osds
+#--------------------------------------------------------------------
+#
+#############################
+# Run these roles on all systems
+#----------------------------
+- hosts: all
+  roles:
+    - hack_NSPR
+    - cfg_network
+    - add_pkgs
+
+#- hosts: RHCSosds
+#  roles:
+#    - cfg_OSDdevices
+

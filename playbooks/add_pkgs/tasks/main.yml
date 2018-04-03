@@ -1,0 +1,101 @@
+---
+
+# add_pkgs
+# install required software
+#   - pkg__list defined in 'group_vars/all'
+
+# see https://serverfault.com/questions/866294/error-failed-to-initialize-nss-library
+ 
+- name: HACK - put libnspr.so on hosts & force install libnspr RPM
+  copy:
+    src: "{{ role_path+'/files/libnspr4.so' }}"
+    dest: /tmp
+
+- name: HACK - force-install libnspr RPM 
+  shell: "LD_PRELOAD=/tmp/libnspr4.so yum install -y nspr"
+
+- name: Check if SERVER repo is already configured.
+  stat: path={{ server_repofile_path }}
+  register: SVR_repofile_result
+ 
+- name: copy SERVER repo from template
+  template:
+    src: "{{ role_path+'/templates/serverrepo.j2' }}"
+    dest: "{{ server_repofile_path }}"
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  when: not SVR_repofile_result.stat.exists
+
+- name: Install EPEL rpm from remote repo.
+  yum:
+    name: "{{ epel_repo_url }}"
+    state: present
+  register: result
+  until: '"failed" not in result'
+  retries: 5
+  delay: 10
+ 
+- name: Import EPEL GPG key.
+  rpm_key:
+    key: "{{ epel_repo_gpg_key_url }}"
+    state: present
+
+- name: Check if SERVER_EXTRAS repo is already configured.
+  stat: path={{ server_extras_repofile_path }}
+  register: SE_repofile_result
+ 
+- name: copy SERVER_EXTRAS repo. from template
+  template:
+    src: "{{ role_path+'/templates/server_extrasrepo.j2' }}"
+    dest: "{{ server_extras_repofile_path }}"
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  when: not SE_repofile_result.stat.exists
+
+- name: Check if SERVER_OPTIONAL repo is already configured.
+  stat: path={{ server_optional_repofile_path }}
+  register: SO_repofile_result
+ 
+- name: copy SERVER_OPTIONAL repo. from template
+  template:
+    src: "{{ role_path+'/templates/server_optionalrepo.j2' }}"
+    dest: "{{ server_optional_repofile_path }}"
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  when: not SO_repofile_result.stat.exists
+
+- name: Check if PBENCH repo is already configured.
+  stat: path={{ pbench_repofile_path }}
+  register: pbench_repofile_result
+ 
+- name: copy PBENCH repo. from template
+  template:
+    src: "{{ role_path+'/templates/pbenchrepo.j2' }}"
+    dest: "{{ pbench_repofile_path }}"
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  when: not pbench_repofile_result.stat.exists
+
+- name: install packages
+  yum: 
+    name: "{{ item }}"
+    state: present
+    enablerepo: epel
+    disable_gpg_check: yes
+  with_items: "{{ pkg_list }}"
+  register: added_pkgs
+
+#- name: cfg pbench
+#  command: pbench-register-tool-set
+#  with_items: "{{ pkg_list }}"
+#  when: '"pbench" in item'
+#  ignore_errors: true
+

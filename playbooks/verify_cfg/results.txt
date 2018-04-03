@@ -1,0 +1,20 @@
+** ansible playbook complete
+SUMMARY of run:
+> Users created: ...
+>
+> SUDOERS created: ...
+>
+> Ceph cluster system inventory -
+>   admin = 
+>   osds  = 
+>   mons  =
+>
+NEXT STEPS:
+>  1) login to admin node as root
+>      - # ssh root@admin_node
+>  2) run ceph-ansible
+>      - # cd /usr/share/ceph-ansible
+>      - # 'ansible-playbook site.yml'
+>  3) run 'post_CephAnsible' playbook
+>
+

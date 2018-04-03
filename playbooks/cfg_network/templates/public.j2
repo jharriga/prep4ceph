@@ -1,0 +1,14 @@
+# ansible 'preCeph/roles/network' using 'group_vars' (all.yml, admin.yml, mons.yml, gateways.yml, osds.yml)
+TYPE=Ethernet
+DEVICE="{{ item.value.net_iface }}"
+ONBOOT=yes
+NM_CONTROLLED=no
+PEERDNS=no
+USERCTL=no
+IPV6INIT=no
+IPV6_AUTOCONF=no
+BOOTPROTO=none
+NETWORK="{{ item.value.net_ip }}"
+NETMASK="{{ item.value.netmask }}"
+IPADDR="{{ item.value.ip_addr }}"
+MTU="{{ item.value.mtu }}"

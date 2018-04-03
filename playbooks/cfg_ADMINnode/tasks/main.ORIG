@@ -1,0 +1,155 @@
+---
+
+#####################################################################
+# FILENAME: 'pre_CephAnsible/tasks/main.yml'
+# Prepare for running 'ceph-ansible'
+# SHOULD ONLY BE RUN ON THE 'admin' node
+# Following procedures in:
+#  - http://git.app.eng.bos.redhat.com/git/perf-dept.git/tree/scripts/ceph-ansible/prep-hosts.py
+#  - http://git.app.eng.bos.redhat.com/git/perf-dept.git/tree/scripts/ceph-ansible/gen-osd-vars.sh
+#  - RHCS 2 Installation Guide chapter 3
+#####################################################################
+
+#############################
+# Tasks for ansible and ceph-ansible
+#   verify ansible version is compatible with ceph-ansible
+#----------------------------
+#
+# Verify installed ansible is compatible with ceph-ansible
+#   ca_ansible_version define in 'group_vars/all'
+- name: Get version of ansible
+  command: ansible --version
+  register: version
+  failed_when: ca_ansible_version not in version.stdout
+
+# Install ceph-ansible
+- name: install ceph-ansible
+  yum:
+    name: ceph-ansible
+    state: present
+  register: install_ca
+  failed_when: >
+    install_ca.rc != 0
+
+# Create the '/etc/ansible/hosts' file using ansible templates
+# see 'group_vars' dir for corresponding group files (e.g. mons.yml, osds.yml)
+# see 'templates' dir for file ca_hosts.j2
+- name: create '/etc/ansible/hosts' file 
+  template: 
+    src: "{{ role_path+'/templates/ca_hosts.j2' }}"
+    dest: '/etc/ansible/hosts'
+    force: yes
+    owner: root
+    group: root
+
+#############################
+# Copy and edit the '/usr/share/ceph-ansible/group_vars/all' file
+#----------------------------
+- name: perform remote copy of the 'all.sample' file to 'all'
+  command: "cp {{ ca_group_vars_all_sample }} {{ ca_group_vars_all }}"
+
+- name: apply edits using lineinfile module
+  lineinfile:
+    dest: "{{ ca_group_vars_all }}"
+    state: present
+    regexp: "{{ item.r }}"
+    insertafter: "{{ item.i }}"
+    line: "{{ item.l }}"
+  with_items:
+    - { r: '^ceph_stable:', i: '^#ceph_stable:', l: 'ceph_stable: true' }
+    - { r: '^ceph_origin:', i: '^#ceph_origin:', l: 'ceph_origin: distro' }
+    - { r: '^ceph_stable_rh_storage:', i: '^#ceph_stable_rh_storage:', l: 'ceph_stable_rh_storage: true' }
+    - { r: '^monitor_interface:', i: '^#monitor_interface:', l: 'monitor_interface: "{{ ca_monitor_interface }}"' }
+    - { r: '^journal_size:', i: '^#journal_size:', l: 'journal_size: "{{ ca_journal_size }}"' }
+    - { r: '^public_network:', i: '^#public_network:', l: 'public_network: "{{ public_netIP }}/{{ public_prefix }}"' }
+    - { r:  '^cluster_network:', i: '^#cluster_network:', l: 'cluster_network: "{{ private_netIP }}/{{ private_prefix }}"' }
+
+#############################
+# Copy and edit the '/usr/share/ceph-ansible/group_vars/osds' file
+#----------------------------
+- name: perform remote copy of the 'osds.sample' file to 'osds'
+  command: "cp {{ ca_group_vars_osds_sample }} {{ ca_group_vars_osds }}"
+
+# these two settings are listed in the Installation Guide but not done here
+#- name: apply edits
+#  lineinfile:
+#    dest: "{{ ca_group_vars_osds }}"
+#    state: present
+#    regexp: '^crush_location'
+#    insertafter: '^#crush_location'
+#    line: 'crush_location: '
+#
+#- name: apply edits
+#  lineinfile:
+#    dest: "{{ ca_group_vars_osds }}"
+#    state: present
+#    regexp: '^osd_crush_location'
+#    insertafter: '^#osd_crush_location'
+#    line: 'osd_crush_location: '
+
+# set raw_multi_journal
+- name: set raw_multi_journal
+  lineinfile:
+    dest: "{{ ca_group_vars_osds }}"
+    state: present
+    regexp: '^raw_multi_journal'
+    insertafter: '^#raw_multi_journal'
+    line: 'raw_multi_journal: true'
+
+# ADD DEVICES
+# Went nuts trying to do this inline with ansible so just append devices to EOF
+# Mark file with comment string
+- name: add opening comment to end of file
+  shell: 'echo -e "####\n# START: Added by play_CephAnsible" >> {{ ca_group_vars_osds }}'
+
+- name: append disk devices header to end of 'group_vars/osds' file
+  shell: echo "devices:" >> {{ ca_group_vars_osds }}
+
+- name: append disk devices to 'group_vars/osds' file
+  shell: echo "  - {{ item }}" >> {{ ca_group_vars_osds }}
+  with_items: "{{ ca_osd_devices }}"
+
+- name: append 'raw_journal_devices:' line
+  shell: 'echo -e "\nraw_journal_devices:" >> {{ca_group_vars_osds }}'
+
+- name: append raw_journal_devices to 'group_vars/osds' file
+  shell: echo "  - {{ item }}" >> {{ ca_group_vars_osds }}
+  with_items: "{{ ca_journal_devices }}"
+
+- name: add closing comment to end of file
+  shell: 'echo -e "# END: Added by play_CephAnsible\n####" >> {{ ca_group_vars_osds }}'
+
+#############################
+# Copy and edit the '/usr/share/ceph-ansible/group-vars/mon' file
+#----------------------------
+- name: perform remote copy of the 'mon.sample' file to 'mon'
+  command: "cp {{ ca_group_vars_mons_sample }} {{ ca_group_vars_mons }}"
+
+# make any required edits to mons file - NONE
+
+#############################
+# Copy and edit the '/usr/share/ceph-ansible/site.yml' file
+#----------------------------
+- name: perform remote copy of the 'site.yml' file to 'site'
+  command: "cp {{ ca_site_sample }} {{ ca_site }}"
+
+# make any required edits to site file - NONE
+
+#############################
+# Create and display closing message with next steps
+#----------------------------
+# create the message        <-- future enhancement
+# see 'group_vars' dir for corresponding group files (e.g. mons.yml, osds.yml)
+# 
+#- name: create message file using template
+#  template: 
+#    src: "{{ role_path+'/templates/results.j2' }}"
+#    dest: "{{ results_file }}"
+#    force: yes
+#
+# display the message
+#- name: cat the file
+#  shell: cat "{{ results_file }}"
+  
+
+

@@ -1,0 +1,24 @@
+[mons]
+{% for host in groups['RHCSmons'] %}
+  {{ host }}
+{% endfor %}
+
+[osds]
+{% for host in groups['RHCSosds'] %}
+  {{ host }}
+{% endfor %}
+
+[rgws]
+{% for host in groups['RHCSrgw'] %}
+  {{ host }}
+{% endfor %}
+
+[clients]
+{% for host in groups['RHCSclients'] %}
+  {{ host }}
+{% endfor %}
+{% for host in groups['RHCSadmin'] %}
+  {{ host }}
+{% endfor %}
+
+

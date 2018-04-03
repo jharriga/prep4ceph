@@ -1,0 +1,35 @@
+---
+
+#####################################################################
+# FILENAME: 'run_cfgADMINnode.yml'
+#
+# Runs cfgADMINnode role which prepares the ADMIN node to run ceph-ansible
+# Creates the /etc/ansible/hosts file and edits 'group_vars' files
+#
+# Sample cmdline:
+#   $ ansible-playbook -i hosts run_cfgADMINnode.yml
+#
+# Be sure to configure site specific variables in 'group_vars/all' file
+#  - cfgADMINnode
+#--------------------------------------------------------------------
+#
+#############################
+# Prepare for running ceph-ansible on admin node
+# 'ceph-ansible' will ONLY be executed on the 'admin' node
+#----------------------------
+- hosts: RHCSadmin
+  roles:
+    - cfg_ADMINnode
+#    - verify_cfg             <-- not yet fully written
+
+#############################
+# Run the ceph-ansible playbook on admin node  <-- possible future enhancement
+#  currently the user must manually run this
+#----------------------------
+#- hosts: RHCSadmin
+#  roles:
+#    - run_CephAnsible
+
+
+
+

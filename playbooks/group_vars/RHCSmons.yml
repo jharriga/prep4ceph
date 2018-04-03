@@ -1,0 +1,16 @@
+---
+
+# MONS group system vars
+
+# Define 'my_networks' dict for MON systems
+#   vars used in 'network/tasks/main.yml' and in template 'public.j2'
+#   vars used in 'network/tasks/main.yml' and in template 'private.j2'
+# Variable values set in hosts inventory and 'group_vars/all'
+my_networks:
+  public_net: 
+    net_name: "{{ public_netname }}"
+    net_iface: p3p1
+    net_ip: "{{ public_netIP }}"
+    ip_addr: "{{ public_ip }}"
+    netmask: "{{ public_netmask }}"
+    mtu: "{{ public_mtu }}"

@@ -1,0 +1,165 @@
+---
+
+#####################################################################
+# FILENAME: 'group_vars/all'
+# 
+#  For completeness, variables are grouped into sections and commented to
+#  indicate which 'role' they are used in
+#
+#--------------------------------------------------------------------
+
+#**********************************************************
+# > SITE SPECIFIC VARAIABLES <
+#   These will likely need to be updated for you specific
+#   deployment environment.
+#   Things like network IPaddresses, repo locations, ...
+#**********************************************************
+
+#
+#############################
+# ROLE: cfg_network
+#  - global vars here, per group vars in osds.yml, clients.yml, ...
+#   see: 'role/cfg_network/tasks/main.yml' for use
+#----------------------------
+# Actual (per network) static IPaddresses are read from hosts inventory file
+gateway_ip: 10.16.159.254
+public_netname: public
+public_netIP: 172.245.1.0
+public_netmask: 255.255.255.0
+public_prefix: 24
+public_mtu: 1500
+
+private_netname: private
+private_netIP: 10.0.0.0
+private_netmask: 255.255.255.0
+private_prefix: 24
+private_mtu: 9000
+
+ntp_master: 'clock.redhat.com'
+
+# Path to 'ifcfg-' files
+ifdir: '/etc/sysconfig/network-scripts'
+
+# Which ports to open - taken from "RHCS 2 Installation Guide chapter 2"
+#   6789
+#   6800-7300
+#   8002 - calamari
+#   7480 - object gateway nodes
+firewall_ports: [ '6789/tcp', '6800-7300/tcp', '8002/tcp', '7480/tcp' ]
+
+#
+#############################
+# ROLE: cfg_OSDdevices
+#   see: 'role/cfg_OSDdevices/tasks/main.yml' for use
+# for clarity all var names start with "ca_"
+#----------------------------
+# must explicitly list out the osd_devices...
+# unfortunately ansible can't handle sequences like "echo - /dev/sd{b,c,d,e,f,g,h,i,j,k,l,m}"
+#
+# BAGL servers have twelve drives
+# These vars are used by roles 'cfg_OSDdevices' and 'pre_CephAnsible'
+#    see: 'tasks/main.yml' for usage
+ca_osd_devices:
+  - /dev/sdb
+  - /dev/sdc
+  - /dev/sdd
+  - /dev/sde
+  - /dev/sdf
+  - /dev/sdg
+  - /dev/sdh
+  - /dev/sdi
+  - /dev/sdj
+  - /dev/sdk
+  - /dev/sdl
+  - /dev/sdm
+
+# BAGL servers have one NVMe device to use for journals
+ca_journal_devices:
+  - /dev/nvme0n1
+
+# BAGL server NVMe device partitions to use for journals
+ca_journal_partitions:
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+  - /dev/nvme0n1
+
+megaraid_src: "{{ role_path }}/files/MegaCli-8.07.14-1.noarch.rpm"
+megaraid_dest: '/tmp/megaraid.rpm'
+
+#
+#############################
+# ROLE: add_users
+#   see: 'roles/add_users/main.yml' for use
+#----------------------------
+# define root account name - helps with creating dynamic lists
+root_user: [ 'root' ]
+
+#
+#############################
+# ROLE: add_pkgs 
+#   - Software packages to be installed
+#   see: 'role/add_pkgs/main.yml' for use
+#   NOTE: cbt requires rbd-enabled FIO, pdsh and collectl
+#----------------------------
+epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+epel_repofile_path: "/etc/yum.repos.d/epel.repo"
+
+pbench_repo_url: "http://pbench.perf.lab.eng.bos.redhat.com/repo/$releasever/"
+pbench_repofile_path: "/etc/yum.repos.d/pbench.repo"
+
+server_repofile_path: "/etc/yum.repos.d/server.repo"
+server_extras_repofile_path: "/etc/yum.repos.d/server_extras.repo"
+server_optional_repofile_path: "/etc/yum.repos.d/server_optional.repo"
+
+pkg_list: [ 'pbench-agent-internal', 'python-pandas', 'pdsh' ]
+#Client_pkg_list: [ 'ceph-common', 'pbench-fio' ]
+
+#
+#############################
+# ROLE: cfg_ADMINnode
+#   - global vars here, per group vars in 'servers' and 'clients'
+#   see: 'role/network/prepCephAnsible/main.yml' for use
+# for clarity all var names start with "ca_"
+#----------------------------
+ca_monitor_interface: p3p1
+ca_journal_size: 5120
+
+#ca_ansible_version: '1.9'
+#ca_sshkey_local: "{{ role_path+'/files/id_rsa_ca_admin.pub' }}"
+#ca_sshkey_remote: '/tmp/ca_sshkey'
+
+ca_group_vars_all_sample: '/usr/share/ceph-ansible/group_vars/all.yml.sample'
+ca_group_vars_all: '/usr/share/ceph-ansible/group_vars/all'
+
+ca_group_vars_osds_sample: '/usr/share/ceph-ansible/group_vars/osds.yml.sample'
+ca_group_vars_osds: '/usr/share/ceph-ansible/group_vars/osds'
+
+ca_group_vars_mons_sample: '/usr/share/ceph-ansible/group_vars/mons.yml.sample'
+ca_group_vars_mons: '/usr/share/ceph-ansible/group_vars/mons'
+
+# SITE configuration vars
+ca_site_sample: '/usr/share/ceph-ansible/site.yml.sample'
+ca_site: '/usr/share/ceph-ansible/site.yml'
+
+results_file: "{{ playbook_dir+'/../results.txt' }}"
+
+#############################
+# ROLE: post_CephAnsible
+#   - global vars here, per group vars in 'servers' and 'clients'
+#   see: 'role/network/postCephAnsible/main.yml' for use
+# for clarity all var names start with "ca_"
+#----------------------------
+ca_keys_src: '/usr/share/ceph-ansible/fetch/key-dir/etc/ceph/ceph.client.admin.keyring'
+ca_keys_dest: '/etc/ceph'
+
+

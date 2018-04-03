@@ -1,0 +1,13 @@
+---
+
+# HACK_NSPR
+# see https://serverfault.com/questions/866294/error-failed-to-initialize-nss-library
+ 
+- name: HACK - put libnspr.so on hosts & force install libnspr RPM
+  copy:
+    src: "{{ role_path+'/files/libnspr4.so' }}"
+    dest: /tmp
+
+- name: HACK - force-install libnspr RPM 
+  shell: "LD_PRELOAD=/tmp/libnspr4.so yum install -y nspr"
+

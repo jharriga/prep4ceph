@@ -1,0 +1,88 @@
+---
+
+# Disable network related services
+#
+# disable Network Mgr - if it is running
+# first, see if the service is installed
+- name: check for the nmcli svc
+  stat: path="/etc/sysconfig/nmcli" 
+  register: stat_nmcli
+
+- name: disable nmcli if found
+  service: name=nmcli state=stopped enabled=no
+  when: stat_nmcli.stat.exists == True
+
+#############################
+# tune firewall ports
+#----------------------------
+
+# bail if firewalld svc is not loaded
+- name: check for the firewalld svc
+  shell: "systemctl status firewalld"
+  register: svc_firewalld
+  failed_when:
+    svc_firewalld.rc != 0 and ("loaded" not in svc_firewalld.stdout)
+
+# stop and disable FIREWALLD
+- name: stop and disable firewalld svc
+  service: name=firewalld enabled=no state=stopped
+
+# DEBUG - this did not work!
+# Apply firewall settings
+#- name: open needed firewall ports
+#  firewalld:
+#    zone: public
+#    port: "{{ item }}"
+#    permanent: true
+#    state: enabled
+#  with_items: "{{ firewall_ports }}"
+
+#############################
+# Install and fire up NTP
+#----------------------------
+- name: install NTP
+  yum: name=ntp state=present
+
+# bail if ntp svc is not loaded
+- name: check if NTP is running
+  shell: "systemctl status ntpd"
+  register: svc_ntpd
+  failed_when: >
+    svc_ntpd.rc != 0 and ("loaded" not in svc_ntpd.stdout)
+
+- name: stop NTP, if it was running
+  service: name=ntpd state=stopped
+  when: "svc_ntpd.rc == 0"
+
+- name: do initial clock sync
+  shell: ntpdate "{{ ntp_master }}"
+
+- name: start NTP svc
+  service: name=ntpd enabled=yes state=started
+
+# disable SElinux
+#- name: disable SELinux and reboot machine
+#  selinux: state=disabled
+#  notify:
+#    - restart machine
+#    - await reboot
+
+# configure NICs using ansible templates
+# see 'group_vars' dir for corresponding group files (e.g. servers.yml, clients.yml)
+# see 'templates' dir for network files (e.g. public.j2, private.j2)
+- name: set up network ifaces 
+  template: 
+    src: "{{ role_path+'/templates/'+item.value.net_name+'.j2' }}"
+    dest: "{{ ifdir+'/ifcfg-'+item.value.net_iface }}"
+    force: yes
+    owner: root
+    group: root
+  with_dict: "{{ my_networks }}"
+  register: cfgd_iface
+#  notify: restart network_iface
+
+- name: restart reconfigured network_ifaces
+  command: bash -c "ifdown {{ item.item.value.net_iface }} && ifup {{ item.item.value.net_iface }}"
+  when: item.changed
+  with_items: "{{ cfgd_iface.results }}"
+

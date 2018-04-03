@@ -1,0 +1,94 @@
+---
+
+#####################################################################
+# FILENAME: 'cfg_OSDdisks/tasks/main.yml'
+# Install megarraidCLI on OSD nodes
+# Initialize disks on OSD nodes
+#-------------------------------------------------------------------
+#
+# install megaraid cli on OSD servers
+#
+# Copy it to the systems first
+- name: copy megaradiCLI rpm file to systems
+  copy: 
+    src: "{{ megaraid_src }}"
+    dest: "{{ megaraid_dest }}"
+
+# then install it
+- name: megaraidCLI install
+  yum:
+    name: "{{ megaraid_dest }}"
+    state: present
+
+#############################
+# Steps from BenT
+# Here is what I do to clear them:
+#********BREAK RAID********
+#wget http://bennyturns.usersys.redhat.com/MegaCli-8.05.06-1.noarch.rpm
+#rpm -i MegaCli-8.05.06-1.noarch.rpm
+#ln -s /opt/MegaRAID/MegaCli/MegaCli64 /usr/local/bin
+#MegaCli64 -CfgLdDel -L1,2,3,4,5,6,7,8,9,10,11,12,13 -Force -a0    
+# for n in `seq 0 11` ; do MegaCli64 -CfgLdAdd -r0[32:$n] WB NORA Cached CachedBadBBU -strpsz256 -a0  ; done
+#
+#parted -s /dev/$disk mklabel msdos
+#parted -s /dev/$disk rm 1
+#----------------------------
+- name: link megaraid cmd
+  file:
+    src: /opt/MegaRAID/MegaCli/MegaCli64
+    dest: /usr/local/bin/MegaCli64
+    state: link
+
+- name: clear RAID cfg (1 of 2)
+  shell: "MegaCli64 -CfgLdDel -L1,2,3,4,5,6,7,8,9,10,11,12,13 -Force -a0"
+
+- name: clear RAID cfg (2 of 2)
+  shell: "MegaCli64 -CfgLdAdd -r0[32:{{ item }}] WB NORA Cached CachedBadBBU -strpsz256 -a0"
+  with_sequence: start=0 end=11
+
+- name: label the devices
+  shell: "parted -s {{ item }} mklabel msdos"
+#         "parted -s {{ item }} rm 1"
+  with_items: 
+    - "{{ ca_osd_devices }}"
+    - "{{ ca_journal_devices }}"
+
+#- name: re-read partition table
+#  shell: "blockdev -q --rereadpt {{ item }}"
+#  with_items: 
+#    - "{{ ca_osd_devices }}"
+#    - "{{ ca_journal_devices }}"
+
+
+#############################
+# Wipe out any partitions on both OSD & journal drives using parted
+#----------------------------
+#   Variables ca_osd_devices and ca_journal_devices defined in 'group_vars/all'
+#- name: OSD & JOURNAL devices - list existing partitions
+#  shell: parted -s "{{ item }}" print|awk '/^ / {print $1}'
+#  with_items: 
+#    - "{{ ca_osd_devices }}"
+#    - "{{ ca_journal_devices }}"
+#  register: parted_out
+#
+#- name: OSD & JOURNAL devices - remove partitions
+#  shell: "parted -s {{ item.item }} rm {{ item.stdout_lines | join(' ') }}"
+#  debug:
+#    msg: "{{ item.item }} AND {{ item.stdout_lines | join(' ') }}"
+#  with_items: "{{ parted_out.results }}"
+#  when: item.stdout != ""
+#
+#- name: zap the OSD and JOURNAL devices - ignore errors
+#  shell: "sgdisk --zap-all {{ item }}"
+#  with_items: 
+#    - "{{ ca_osd_devices }}"
+#    - "{{ ca_journal_devices }}"
+#  ignore_errors: yes
+
+
+
+
+
+
+
+
